@@ -29,6 +29,36 @@ $(document).ready(function() {
 
     var retrData;
 
+    function updateChart() {
+      var newestData = [retrCarbData, retrProData, retrFatData, retrSatFatData, retrFiberData];
+
+      var ourLabels = ["Carbs", "Protein", "Total Fat", "Saturated Fat", "Fiber"];
+      function removeData(chart) {
+        chart.data.labels.pop();
+        chart.data.datasets.forEach((dataset) => {
+            dataset.data.pop();
+        });
+        chart.update();
+      };
+
+      function addData(chart, label, data) {
+          chart.data.labels.push(label);
+          chart.data.datasets.forEach((dataset) => {
+              dataset.data.push(newestData);
+          });
+          chart.update();
+      };
+
+      ourLabels.forEach(function(label){
+        removeData(theChart);
+        });
+
+      for (i = 0; i < ourLabels.length; i++) {
+        addData (theChart, ourLabels[i], newestData[i]);
+      };
+
+    };
+
     function saveLocal(z) {
       console.log(z);
       localStorage.setItem('ourData', JSON.stringify(z));
@@ -105,9 +135,13 @@ $(document).ready(function() {
       $('#thisHere').append('Total Fat: ' + fatData);
       $('#thisHere').append('Saturated Fat: ' + satFatData);
       $('#thisHere').append('Fiber: ' + fiberData);
+
+      updateChart();
     };
 
-    theChart.update ();
+    // theChart.update ();
+
+
 
     // =====================================================
     // =====================================================
@@ -182,35 +216,12 @@ $(document).ready(function() {
         ]
       }
     }
+
+
+
   });
 
-var newestData = [retrCarbData, retrProData, retrFatData, retrSatFatData, retrFiberData];
 
-var ourLabels = ["Carbs", "Protein", "Total Fat", "Saturated Fat", "Fiber"];
-
-  function removeData(chart) {
-    chart.data.labels.pop();
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.pop();
-    });
-    chart.update();
-};
-
-  function addData(chart, label, data) {
-      chart.data.labels.push(label);
-      chart.data.datasets.forEach((dataset) => {
-          dataset.data.push(newestData);
-      });
-      chart.update();
-};
-
-ourLabels.forEach(function(label){
-  removeData(theChart);
-  });
-
-for (i = 0; i < ourLabels.length; i++) {
-  addData (theChart, ourLabels[i], newestData[i]);
-};
 
   // removeData(theChart);
   // removeData(theChart);
