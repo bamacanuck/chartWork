@@ -184,4 +184,28 @@ $(document).ready(function() {
     }
   });
 
+var newestData = [retrCarbData, retrProData, retrFatData, retrSatFatData,retrFiberData];
+
+var ourLabels = ["Carbs", "Protein", "Total Fat", "Sat. Fat", "Fiber"];
+
+  function removeData(chart) {
+    chart.data.labels.pop();
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.pop();
+    });
+    chart.update();
+};
+
+  removeData(theChart);
+
+  function addData(chart, label, data) {
+    chart.data.labels.push(label);
+    chart.data.datasets.forEach((dataset) => {
+        dataset.data.push(newestData);
+    });
+    chart.update();
+};
+
+  addData(theChart, ourLabels, newestData);
+
 });
