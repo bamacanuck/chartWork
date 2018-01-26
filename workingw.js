@@ -184,7 +184,7 @@ $(document).ready(function() {
     }
   });
 
-var newestData = [retrCarbData, retrProData, retrFatData, retrSatFatData,retrFiberData];
+var newestData = [retrCarbData, retrProData, retrFatData, retrSatFatData, retrFiberData];
 
 var ourLabels = ["Carbs", "Protein", "Total Fat", "Saturated Fat", "Fiber"];
 
@@ -196,16 +196,48 @@ var ourLabels = ["Carbs", "Protein", "Total Fat", "Saturated Fat", "Fiber"];
     chart.update();
 };
 
-  removeData(theChart);
-
   function addData(chart, label, data) {
-    chart.data.labels.push(label);
-    chart.data.datasets.forEach((dataset) => {
-        dataset.data.push(newestData);
-    });
-    chart.update();
+      chart.data.labels.push(label);
+      chart.data.datasets.forEach((dataset) => {
+          dataset.data.push(newestData);
+      });
+      chart.update();
 };
 
-  addData(theChart, ourLabels, newestData);
+ourLabels.forEach(function(label){
+  removeData(theChart);
+  });
+
+for (i = 0; i < ourLabels.length; i++) {
+  addData (theChart, ourLabels[i], newestData[i]);
+};
+
+  // removeData(theChart);
+  // removeData(theChart);
+  // removeData(theChart);
+  // removeData(theChart);
+  // removeData(theChart);
+
+
+  // ourLabels.forEach(addData (theChart, index?)){
+
+  // };
+
+  // addData(theChart, "Carbs", retrCarbData);
+  // addData(theChart, "Protein", retrProData);
+  // addData(theChart, "Total Fat", retrFatData);
+  // addData(theChart, "Saturated Fat", retrSatFatData);
+  // addData(theChart, "Fiber", retrFiberData);
+
+
+// for (i = 0; i < ourLabels.length; i++) {
+//   addData (theChart, ourLabels[i], newestData[i]);
+// };
+
+  
+
+//   addData(theChart, ourLabels, newestData);
+
+  // theChart.update();
 
 });
