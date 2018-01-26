@@ -186,7 +186,7 @@ $(document).ready(function() {
 
 var newestData = [retrCarbData, retrProData, retrFatData, retrSatFatData,retrFiberData];
 
-var ourLabels = ["Carbs", "Protein", "Total Fat", "Sat. Fat", "Fiber"];
+var ourLabels = ["Carbs", "Protein", "Total Fat", "Saturated Fat", "Fiber"];
 
   function removeData(chart) {
     chart.data.labels.pop();
