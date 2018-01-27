@@ -4,7 +4,7 @@ $(document).ready(function() {
   var newestData;
 
   function removeData(chart) {
-        chart.data.labels.pop("Carbs", "Protein", "Total Fat", "Saturated Fat", "Fiber");
+        chart.data.labels.pop();
         chart.data.datasets.forEach((dataset) => {
             dataset.data.pop();
         });
@@ -28,16 +28,15 @@ $(document).ready(function() {
         removeData(theChart);
         });
 
-      for (j = 0; j < ourLabels.length; j++) {
-        removeData(theChart);
-      };
-
-      // for (i = 0; i < ourLabels.length; i++) {
-      //   addData (theChart, ourLabels[i], newestData[i]);
+      // for (j = 0; j < ourLabels.length; j++) {
+      //   removeData(theChart);
       // };
 
-      theChart.data.datasets.data = newestData;
-      theChart.update;
+      for (i = 0; i < ourLabels.length; i++) {
+        addData (theChart, ourLabels[i], newestData[i]);
+      };
+
+    // theChart.update ();
 
     };
 
@@ -118,7 +117,8 @@ $(document).ready(function() {
       $('#thisHere').append('Saturated Fat: ' + satFatData);
       $('#thisHere').append('Fiber: ' + fiberData);
 
-      updateChart();
+      theChart.update();
+
     };
 
   $('#findIngr').on('click', function(event) {
@@ -260,4 +260,4 @@ $(document).ready(function() {
 
   // theChart.update();
 
-}); 
+});
