@@ -1,41 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <title>Nutritional Chart</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" href="style.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="Chart.bundle.min.js"></script>
   <script src="chartFix.js"></script>
-  
 </head>
-
 <body>
+  <a href="https://twitter.com/share?ref_src=twsrc%5Etfw" class="twitter-share-button" data-show-count="false">Tweet</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <nav class="navbar navbar-expand-xl navbar-light .text-muted">
   <div class="container">
     <h1>Nutritional Chart</h1>
-
     <!-- We'll be dumping our JSON contents in here -->
     <div id="foodDiv"></div>
-
-    <!-- This form will be where users input data about the movies -->
     <form id="searchForm">
       <label for="ingr-input">search</label>
       <input type="text" id="ingr-input"><br>
-
       <!-- This button will trigger our AJAX call -->
       <input id="findIngr" type="submit" value="ingredient search">
     </form>
-
     <div id="thisHere"></div>
-
     <canvas id="nutrChart" width="90%" height="30%">
     </canvas>
-
     <!-- <div id="dynamicChart"></div> -->
-    
   </div>
-
 </body>
-
 </html>
